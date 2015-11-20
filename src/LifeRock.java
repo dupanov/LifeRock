@@ -40,8 +40,9 @@ public class LifeRock extends Rock
      */
     public LifeRock()
     {
-
+       // super();
         phase = 1;
+      //  setDead();
     }
 
     /**
@@ -55,7 +56,7 @@ public class LifeRock extends Rock
             numNeighbors = countLiveNeighbors();
             phase = 2;
         } else {
-            updateStatus();
+            updateStatus(numNeighbors);
             phase = 1;
         }
     }
@@ -100,32 +101,29 @@ public class LifeRock extends Rock
         Grid<Actor> grid = getGrid();
         ArrayList<Actor> neighbors = grid.getNeighbors(loc);
         int counter=0;
-       // ArrayList<Location> loc = this.getGrid().getValidAdjacentLocations(this.getLocation());
-        // Location loc = this.getLocation().getAdjacentLocation(i * 45);
-        for (Actor actor : neighbors)
-            if (isAlive(actor)) {
+
+        for (Actor actorRock : neighbors)
+        {//LifeRock actorRock = (LifeRock) actor;
+            if (isAlive(actorRock)) {
                 counter++;
             }
+        }
         return counter;
     }
-
 
 
     /**
      * Updates the status of the Rock (live or dead) based on
      * the number of neighbors.
      */
-    public void updateStatus(){
+    public void updateStatus(int numNeighbors){
         if(isAlive()){
-            int members = countLiveNeighbors();
-            if(members != 2 && members != 3){
+            if(numNeighbors != 2 && numNeighbors != 3){
             setDead();
             }
-        }
-        if(!isAlive()){
-            int members = countLiveNeighbors();
-            if(members == 3){
-                this.setAlive();
+        } else {
+            if(numNeighbors == 3){
+                setAlive();
             }
         }
     }

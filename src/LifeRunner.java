@@ -16,9 +16,13 @@
  * @author Barbara Cloud Wells
  */
 
+import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;
+import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 import info.gridworld.grid.UnboundedGrid;
+
+import java.util.ArrayList;
 
 
 /**
@@ -29,16 +33,17 @@ public class LifeRunner
 {
     public static void main(String[] args)
     {
-        ActorWorld world = new ActorWorld();
-        makeRocks(world);
-        world.show();
+        makeLifeWorld(50, 50);
     }
 
     /**
      * Makes a Game of Life grid with an r-pentomino.
      */
     public static void makeLifeWorld(int rows, int cols){
-
+        ActorWorld world = new ActorWorld();
+        makeRocks(world);
+        makePentomino(world, rows/2, cols/2);
+        world.show();
     }
     /**
      * Fills the grid with LifeRocks.
@@ -49,9 +54,23 @@ public class LifeRunner
                 Location loc = new Location(i, j);
                 LifeRock rock = new LifeRock();
                 world.add(loc, rock);
-                rock.setAlive();
-                rock.act();
+
             }
+        }
+    }
+
+    public static void makePentomino(ActorWorld world, int x, int y) {
+        Grid<Actor> grid = world.getGrid();
+        ArrayList<Location> locs = new ArrayList<Location>();
+        locs.add(new Location(x-1, y));
+        locs.add(new Location(x-1, y+1));
+        locs.add(new Location(x,   y-1));
+        locs.add(new Location(x,   y));
+        locs.add(new Location(x+1, y));
+
+        for (Location loc: locs) {
+            LifeRock rock = (LifeRock) grid.get(loc);
+            rock.setAlive();
         }
     }
 
