@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="framework1">
-    <CLASSES />
-    <JAVADOC />
-    <SOURCES>
-      <root url="file://$PROJECT_DIR$/../GridWorldCode/framework" />
-    </SOURCES>
-  </library>
-</component>

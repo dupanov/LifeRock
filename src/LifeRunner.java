@@ -18,10 +18,9 @@
 
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;
+import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
-import info.gridworld.grid.UnboundedGrid;
-
 import java.util.ArrayList;
 
 
@@ -33,14 +32,15 @@ public class LifeRunner
 {
     public static void main(String[] args)
     {
-        makeLifeWorld(50, 50);
+        makeLifeWorld(100, 100);
     }
 
     /**
      * Makes a Game of Life grid with an r-pentomino.
      */
     public static void makeLifeWorld(int rows, int cols){
-        ActorWorld world = new ActorWorld();
+        BoundedGrid grid = new BoundedGrid(rows, cols);
+        ActorWorld world = new ActorWorld(grid);
         makeRocks(world);
         makePentomino(world, rows/2, cols/2);
         world.show();

@@ -30,7 +30,7 @@ import java.util.ArrayList;
 public class LifeRock extends Rock
 {
     final static Color colorAlive = Color.RED;
-    final static Color colorDead = Color.BLACK;
+    final static Color colorDead = Color.WHITE;
     int phase;
     int numNeighbors;
 
@@ -40,9 +40,9 @@ public class LifeRock extends Rock
      */
     public LifeRock()
     {
-       // super();
+        super();
         phase = 1;
-      //  setDead();
+        setDead();
     }
 
     /**
