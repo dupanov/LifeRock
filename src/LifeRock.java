@@ -36,7 +36,7 @@ public class LifeRock extends Rock
 
     /**
      * Constructs a LifeRock for the Lige Game.
-     * @param phase innitialized
+     * param phase innitialized
      */
     public LifeRock()
     {
@@ -103,7 +103,7 @@ public class LifeRock extends Rock
         int counter=0;
 
         for (Actor actorRock : neighbors)
-        {//LifeRock actorRock = (LifeRock) actor;
+        {
             if (isAlive(actorRock)) {
                 counter++;
             }
