@@ -15,11 +15,13 @@
  * @author Chris Nevison
  * @author Barbara Cloud Wells
  */
+package life.myLife;
 
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Rock;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -46,6 +48,15 @@ public class LifeRock extends Rock
     }
 
     /**
+     * Returns true if the Rock is alive.
+     * This method used as static for neighbours of the current actor
+     */
+    public static boolean isAlive(Actor actor){
+
+        return actor.getColor() == colorAlive;
+    }
+
+    /**
      * Check what phase we?re in and calls the appropriate method.
      * Moves to the next phase.
      * Updates current status and the sets @param phase back to 1.
@@ -60,16 +71,6 @@ public class LifeRock extends Rock
             phase = 1;
         }
     }
-
-    /**
-     * Returns true if the Rock is alive.
-     * This method used as static for neighbours of the current actor
-     */
-    public static boolean isAlive(Actor actor){
-
-        return actor.getColor() == colorAlive;
-    }
-
 
     /**
      * Overloaded method for current actor
